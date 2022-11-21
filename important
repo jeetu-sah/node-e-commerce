@@ -1,0 +1,58 @@
+npm init -y
+tsc --init
+
+
+*----------------install typescript-------------*
+https://khalilstemmler.com/blogs/typescript/node-starter-project/
+
+npm install typescript --save-dev
+npm install -g typescript
+
+
+npm install @types/node --save-dev
+
+npm install --save-dev ts-node nodemon
+
+*----------------install Express js in typescript + node js-------------*
+npm i -D typescript @types/express @types/node
+
+
+https://blog.logrocket.com/how-to-set-up-node-typescript-express/
+
+
+
+<!----Mysql node js ---->
+npm install mysql
+https://dev.to/larswaechter/using-mysql-in-nodejs-with-typescript-ida
+https://typeorm.io/
+npm i mysql2 typeorm reflect-metadata
+
+Type ORM
+https://github.com/xeusteerapat/node-typeorm-crud/tree/master/src
+
+Migration: 
+https://orkhan.gitbook.io/typeorm/docs/migrations
+
+typeorm migration:create ./src/database/migrations/PostRefactoring
+typeorm migration:create ./src/migrations/UserRefactoring
+
+For Run Migration file
+-> typeorm -d src/database/app-data-source.ts migration:run
+-> typeorm -d src/database/ormconfig.json migration:run
+-> typeorm -d ormconfig.json migration:run
+-> npm run typeorm migration:run -- -d src/database/app-data-source.ts 
+
+-> typeorm migration:run
+-> npx typeorm-ts-node-esm migration:run
+-> npx typeorm-ts-node-esm migration:generate ./src/migrations/update-post-table -d ./src/data-source.ts
+-> typeorm migration:revert
+
+
+Entity. 
+typeorm entity:create -n User
+typeorm entity:create -n Post
+typeorm entity:create -n Post -d src/entity
+
+
+
+
