@@ -1,6 +1,10 @@
 # node-e-commerce
 
 
+## API DOCUMENT POSTMAN
+
+https://documenter.getpostman.com/view/7364189/2s8YmSt1gS
+
 ## Installation Process
    1. Clone the repository
    2. npm start
