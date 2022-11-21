@@ -1,7 +1,7 @@
 # node-e-commerce
 
 
-## API DOCUMENT POSTMAN
+## API Document Postman
 
 https://documenter.getpostman.com/view/7364189/2s8YmSt1gS
 
