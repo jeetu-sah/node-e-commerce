@@ -8,7 +8,8 @@ admin.post('/', (req: Request, res: Response, next) => {
 });
 
 admin.post('/users', (req: Request, res: Response, next) => {
-    return res.send(req.body);
+   return res.send('yes admin routes working')
+    // return res.send(req.body);
 });
 
 export default admin;

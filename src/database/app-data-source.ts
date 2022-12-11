@@ -16,7 +16,6 @@ const myDataSource = new DataSource({
     logging: true,
     synchronize: true,
     migrationsTableName: "custom_migration_table",
-    
 })
 
 export default myDataSource;

@@ -19,8 +19,6 @@ npm i -D typescript @types/express @types/node
 
 https://blog.logrocket.com/how-to-set-up-node-typescript-express/
 
-
-
 <!----Mysql node js ---->
 npm install mysql
 https://dev.to/larswaechter/using-mysql-in-nodejs-with-typescript-ida
