@@ -1,14 +1,13 @@
 import {Entity, 
         PrimaryGeneratedColumn, 
         Column,
-        CreateDateColumn,
-        UpdateDateColumn,
-        DeleteDateColumn
+        OneToMany
 } from "typeorm";
 
 import { IdEntity } from "./common/IdEntity"
+import { Address } from "./Address"
 
-@Entity()
+@Entity("users")
 export class User extends IdEntity{
 
     @PrimaryGeneratedColumn()
@@ -31,5 +30,8 @@ export class User extends IdEntity{
 
     @Column({ type:"varchar", length:50})
     birthplace: string;
+
+    @OneToMany(() => Address, (address) => address.user)
+    addresses: Address[]
 
 }

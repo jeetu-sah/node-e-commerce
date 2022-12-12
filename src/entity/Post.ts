@@ -1,7 +1,7 @@
 import { Entity, Column, PrimaryGeneratedColumn } from "typeorm"
 import { IdEntity } from "./common/IdEntity"
 
-@Entity()
+@Entity("posts")
 export class Post extends IdEntity {
     @PrimaryGeneratedColumn()
     id: number

@@ -2,6 +2,7 @@ import { DataSource } from "typeorm"
 import dotenv from "dotenv";
 import {Post} from "../entity/Post"
 import {User} from "../entity/User"
+import {Address} from "../entity/Address"
 dotenv.config();
 
 const myDataSource = new DataSource({
@@ -11,7 +12,7 @@ const myDataSource = new DataSource({
     username: "root",
     password: "",
     database: "nodeapi",
-    entities: [Post, User],
+    entities: [Post, User, Address],
     migrations: ['src/migrations/*.ts'],
     logging: true,
     synchronize: true,
