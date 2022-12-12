@@ -1,6 +1,10 @@
 npm init -y
 tsc --init
 
+TYPEORM.
+https://orkhan.gitbook.io/typeorm/docs/entities
+CRUD
+https://javascript.plainenglish.io/typeorm-tutorial-for-beginner-crud-in-express-js-typescript-b447f1fd7622
 
 *----------------install typescript-------------*
 https://khalilstemmler.com/blogs/typescript/node-starter-project/

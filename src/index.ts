@@ -21,7 +21,7 @@ const app: Express = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 // const port = process.env.PORT;
-const port = 4000;
+const port = 4040;
 
 app.use(routes);
 

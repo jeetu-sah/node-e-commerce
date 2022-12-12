@@ -1,16 +1,25 @@
 import express, { Express, Request, Response, Router } from 'express';
+import myDataSource from "../../../database/app-data-source";
+import { User } from '../../../entity/User';
 const routes = Router();
 const userRoutes: Express = express();
 
 
-userRoutes.post('/users', (req: Request, res: Response, next) => {
-    //return res.send('send all users request in ')
-    //return res.send(req.body);
+userRoutes.post('/', async(req: Request, res: Response, next) => {
+    const users = await myDataSource.getRepository(User).find()
+    return res.send(users)
 });
 
-userRoutes.post('/users/create', (req: Request, res: Response, next) => {
-    return res.send('send')
-    //return res.send(req.body);
+userRoutes.post('/:id', async (req: Request, res: Response, next) => {
+    try {
+        // return res.send(`sen ${req.params.id}`)
+        let user_id: number = parseInt(req.params.id);
+        const users = await myDataSource.getRepository(User).findOneBy({ id: user_id })
+        return res.send(users)
+    }
+    catch(error){
+        throw new Error('This is an error')
+    }
 });
 
 
