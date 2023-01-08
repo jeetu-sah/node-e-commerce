@@ -3,6 +3,10 @@ tsc --init
 
 TYPEORM.
 https://orkhan.gitbook.io/typeorm/docs/entities
+
+https://codeburst.io/typeorm-by-example-part-6-6123a9e33856
+
+https://orkhan.gitbook.io/typeorm/docs/find-options
 CRUD
 https://javascript.plainenglish.io/typeorm-tutorial-for-beginner-crud-in-express-js-typescript-b447f1fd7622
 

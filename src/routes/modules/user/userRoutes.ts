@@ -14,7 +14,7 @@ userRoutes.post('/:id', async (req: Request, res: Response, next) => {
     try {
         // return res.send(`sen ${req.params.id}`)
         let user_id: number = parseInt(req.params.id);
-        const users = await myDataSource.getRepository(User).findOneBy({ id: user_id })
+        const users = await myDataSource.getRepository(User).findOne({relations: ['addresses'],where:{ id: user_id}})
         return res.send(users)
     }
     catch(error){

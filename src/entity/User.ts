@@ -1,11 +1,14 @@
 import {Entity, 
         PrimaryGeneratedColumn, 
         Column,
-        OneToMany
+        OneToMany,
+        Relation
 } from "typeorm";
 
 import { IdEntity } from "./common/IdEntity"
 import { Address } from "./Address"
+
+
 
 @Entity("users")
 export class User extends IdEntity{
@@ -33,5 +36,6 @@ export class User extends IdEntity{
 
     @OneToMany(() => Address, (address) => address.user)
     addresses: Address[]
+    metadata: Relation<Address>
 
 }
