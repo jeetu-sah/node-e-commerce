@@ -3,6 +3,9 @@ import dotenv from "dotenv";
 import {Post} from "../entity/Post"
 import {User} from "../entity/User"
 import {Address} from "../entity/Address"
+import {Image} from "../entity/Image"
+import {Product} from "../entity/Product"
+
 dotenv.config();
 
 const myDataSource = new DataSource({
@@ -12,7 +15,7 @@ const myDataSource = new DataSource({
     username: "root",
     password: "",
     database: "nodeapi",
-    entities: [Post, User, Address],
+    entities: [Post, User, Address, Image, Product],
     migrations: ['src/migrations/*.ts'],
     logging: true,
     synchronize: true,

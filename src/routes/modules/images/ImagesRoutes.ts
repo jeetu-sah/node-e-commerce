@@ -3,7 +3,6 @@ import { send } from 'process';
 import myDataSource from "../../../database/app-data-source";
 import multer from 'multer';
 import path from 'path';
-import { Product } from '../../../entity/Product';
 
 const routes = Router();
 const productRoutes: Express = express();
@@ -33,13 +32,6 @@ productRoutes.get('/',  async(req: Request, res: Response, next) => {
     //return res.send(addresses)
 });
 
-productRoutes.post('/create', upload.single('images') , async(req: Request, res: Response, next) => {
-    const product = await myDataSource.getRepository(Product).create(req.body)
-    const results = await myDataSource.getRepository(Product).save(product)
-    return res.send(results)
-});
-
-
 productRoutes.get('/:id', async (req: Request, res: Response, next) => {
     try {
        res.send("return id")
@@ -58,6 +50,11 @@ productRoutes.delete('/:id', async (req: Request, res: Response, next) => {
     }
 });
 
-
+productRoutes.post('/create', async(req: Request, res: Response, next) => {
+    res.send("Create routes")
+    // const address = await myDataSource.getRepository(Address).create(req.body)
+    // const results = await myDataSource.getRepository(Address).save(address)
+    // return res.send(results)
+});
 
 export default productRoutes;

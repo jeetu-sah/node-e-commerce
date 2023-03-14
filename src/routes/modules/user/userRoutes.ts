@@ -1,26 +1,33 @@
-import express, { Express, Request, Response, Router } from 'express';
-import myDataSource from "../../../database/app-data-source";
-import { User } from '../../../entity/User';
+import express, { Express, Request, Response, Router } from "express";
+import { newUserFacade } from "../../../facades/BaseFacade";
+
 const routes = Router();
 const userRoutes: Express = express();
 
-
-userRoutes.post('/', async(req: Request, res: Response, next) => {
-    const users = await myDataSource.getRepository(User).find()
-    return res.send(users)
+userRoutes.post("/", async (req: Request, res: Response, next) => {
+    const users = await newUserFacade.get();
+    res.json({
+        status: 200,
+        data: null,
+        datas: users,
+        msg: "Users getting successfully!!!",
+    });
 });
 
-userRoutes.post('/:id', async (req: Request, res: Response, next) => {
-    try {
-        // return res.send(`sen ${req.params.id}`)
-        let user_id: number = parseInt(req.params.id);
-        const users = await myDataSource.getRepository(User).findOne({relations: ['addresses'],where:{ id: user_id}})
-        return res.send(users)
-    }
-    catch(error){
-        throw new Error('This is an error')
-    }
-});
+userRoutes.post("/:id", async (req: Request, res: Response, next) => {
+  try {
+    let user_id = parseInt(req.params.id);
+    const user = await newUserFacade.first(user_id);
 
+    res.json({
+        status: 200,
+        data: user,
+        msg: "Users record return successfully!!!",
+    });
+  }
+  catch(error){
+      throw new Error('This is an error')
+  }
+});
 
 export default userRoutes;

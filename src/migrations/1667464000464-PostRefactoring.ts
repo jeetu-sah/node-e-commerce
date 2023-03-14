@@ -14,8 +14,7 @@ export class PostRefactoring1667464000464 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.query('ALTER TABLE `post` CHANGE `name` `title` VARCHAR(100)')
-
+        await queryRunner.query('ALTER TABLE `post` CHANGE `name` `title` VARCHAR(100)');
     }
 
 }
