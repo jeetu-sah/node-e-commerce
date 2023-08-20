@@ -7,6 +7,9 @@ import {Entity,
 
 import { IdEntity } from "./common/IdEntity"
 import { Address } from "./Address"
+import { PolymorphicChildren } from 'typeorm-polymorphic';
+import { File } from "./File";
+
 
 @Entity("products")
 export class Product extends IdEntity{
@@ -25,4 +28,10 @@ short_description: string;
 
 @Column({ type: "longtext" })
 long_description: string;
+
+@PolymorphicChildren(() => File, {
+    eager: false,
+})
+files: File[]
+
 }

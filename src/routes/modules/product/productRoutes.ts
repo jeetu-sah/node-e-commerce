@@ -4,6 +4,7 @@ import myDataSource from "../../../database/app-data-source";
 import multer from 'multer';
 import path from 'path';
 import { Product } from '../../../entity/Product';
+import { File } from '../../../entity/File';
 
 const routes = Router();
 const productRoutes: Express = express();
@@ -20,17 +21,31 @@ const storage = multer.diskStorage({
 
 const upload = multer({storage: storage});
 
-productRoutes.post('/upload-image', upload.single('images'),  async(req: Request, res: Response, next) => {
+productRoutes.post('/:id/upload-image', upload.single('images'),  async(req: Request, res: Response, next) => {
     res.setHeader('Content-Type', 'multipart/form-data');
-    res.send(req.file?.filename);
-    //const addresses = await myDataSource.getRepository(Address).find({relations:['user']})
-    //return res.send(addresses)
+    //res.send(req.file);
+    let product_id: number = parseInt(req.params.id);
+    const product = await myDataSource.getRepository(Product).findOne({where:{ id: product_id} })
+    if(!product) {
+        return res.send('product not found')
+    }
+
+    let newfile  = new File;
+    newfile.file_name = req.file?.filename;
+    newfile.file_type = req.file?.mimetype;
+    newfile.file_size = req.file?.size;
+    newfile.file_path = req.file?.path;
+    newfile.entityId = product.id;
+    newfile.entityType = "Product";
+    newfile.owner = product
+    
+    const results = await myDataSource.getRepository(File).save(newfile)
+    return res.send(results)
 });
 
 productRoutes.get('/',  async(req: Request, res: Response, next) => {
-    res.send("product routes")
-    //const addresses = await myDataSource.getRepository(Address).find({relations:['user']})
-    //return res.send(addresses)
+    const addresses = await myDataSource.getRepository(Product).find()
+    return res.send(addresses)
 });
 
 productRoutes.post('/create', upload.single('images') , async(req: Request, res: Response, next) => {

@@ -8,6 +8,7 @@ export class Address extends IdEntity {
     @ManyToOne(() => User, (user) => user.addresses)
     @JoinColumn({ name: 'userId' })
     public user: Relation<User>
+    
     @Column({type: 'text'})
     address_one: string
 
