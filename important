@@ -61,4 +61,13 @@ typeorm entity:create -n Post -d src/entity
 
 
 
+Unit Test cases using jest
+https://www.browserstack.com/guide/unit-testing-for-nodejs-using-jest
+
+Unit tesing with typescript using jest
+https://plainenglish.io/blog/beginners-guide-to-testing-jest-with-node-typescript
+https://www.tabnine.com/code/javascript/functions/supertest/Response/statusCode
+
+
+
 
