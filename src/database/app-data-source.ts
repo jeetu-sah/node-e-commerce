@@ -2,25 +2,24 @@ import { DataSource } from "typeorm"
 import dotenv from "dotenv";
 import {Post} from "../entity/Post"
 import {User} from "../entity/User"
-import {Address} from "../entity/Address"
-import {Image} from "../entity/Image"
-import {Product} from "../entity/Product"
-import { File } from "../entity/File";
 
 dotenv.config();
 
 const myDataSource = new DataSource({
-    type: "mysql",
-    host: "localhost",
-    port: 3306,
-    username: "root",
-    password: "",
-    database: "nodeapi",
-    entities: [Post, User, Address, Image, Product, File],
-    migrations: ['src/migrations/*.ts'],
-    logging: true,
-    synchronize: true,
-    migrationsTableName: "custom_migration_table",
+    "type": "mysql",
+    "host": "localhost",
+    "port": 3306,
+    "username": "root",
+    "password": "",
+    "database": "nodeapi",
+    //entities: [Post, User],
+    "entities": ["src/entity/**/*.ts"],
+    "logging": true,
+    "synchronize": true,
+    "migrationsRun": true,
+    "migrations": ["src/migrations/**/*.ts"],
+    "migrationsTableName": "migrations"
+    
 })
 
 export default myDataSource;
