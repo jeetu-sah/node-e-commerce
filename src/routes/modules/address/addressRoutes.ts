@@ -2,6 +2,8 @@ import express, { Express, Request, Response, Router } from 'express';
 import { send } from 'process';
 import myDataSource from "../../../database/app-data-source";
 import { Address } from '../../../entity/Address';
+import { newAddressFacade, newUserFacade } from '../../../facades/BaseFacade';
+import { Convertor } from './../../../utils/Convertor'
 const routes = Router();
 const addressRoutes: Express = express();
 
@@ -35,9 +37,20 @@ addressRoutes.delete('/:id', async (req: Request, res: Response, next) => {
 });
 
 addressRoutes.post('/create', async(req: Request, res: Response, next) => {
-    const address = await myDataSource.getRepository(Address).create(req.body)
-    const results = await myDataSource.getRepository(Address).save(address)
-    return res.send(results)
+    //const address = await myDataSource.getRepository(Address).create(req.body)
+    const { userId } = req.body;
+    const request = req.body;
+    const userDetails = await newUserFacade.first(parseInt(userId));
+    if (!userDetails) {
+        throw new Error('User not found for the id is, '+ userId);
+    }
+
+    request.user = userDetails
+    const addressResponse = Convertor.toAddressConvertor(request);
+    
+    const result = await newAddressFacade.save(addressResponse);
+    return res.send(result);
+  
 });
 
 

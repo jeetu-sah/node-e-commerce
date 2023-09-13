@@ -1,5 +1,6 @@
 import myDataSource from "../database/app-data-source";
 import { Address } from "../entity/Address";
+import { IRawAddressInterface } from "../routes/modules/address/addressTypes";
 
 export class AddressFacade {
   protected repository;
@@ -18,4 +19,9 @@ export class AddressFacade {
   get = () => {
     return this.repository.find({ relations: ["user"] });
   };
+
+  save = async (address: Address) => {
+    const newAddress = this.repository.save(address)
+    return newAddress;
+  }
 }

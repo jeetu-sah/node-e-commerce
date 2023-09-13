@@ -60,6 +60,10 @@ typeorm entity:create -n Post
 typeorm entity:create -n Post -d src/entity
 
 
+TypeORM
+https://mikro-orm.io/docs/entity-constructors#:~:text=The%20constructor%20will%20be%20called,data%20when%20creating%20new%20entity.
+
+
 
 Unit Test cases using jest
 https://www.browserstack.com/guide/unit-testing-for-nodejs-using-jest
@@ -67,6 +71,8 @@ https://www.browserstack.com/guide/unit-testing-for-nodejs-using-jest
 Unit tesing with typescript using jest
 https://plainenglish.io/blog/beginners-guide-to-testing-jest-with-node-typescript
 https://www.tabnine.com/code/javascript/functions/supertest/Response/statusCode
+
+https://betterprogramming.pub/writing-unit-tests-for-your-nodejs-api-13257bd0e46b#:~:text=logic%20to%20index.-,test.,file%20add%20the%20following%20script.&text=Now%20when%20we%20run%20npm,all%20files%20with%20the%20extension%20.
 
 
 
