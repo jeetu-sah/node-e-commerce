@@ -15,7 +15,19 @@ export class UserFacade {
     });
   };
 
+  findByEmail = (value: string) => {
+    return this.repository.findOne({
+      relations: ["addresses"],
+      where: { email: value },
+    });
+  };
+
   get = () => {
     return this.repository.find({ relations: ["addresses"] });
   };
+
+  save = async (address: User) => {
+    const newUser = this.repository.save(address)
+    return newUser;
+  }
 }
